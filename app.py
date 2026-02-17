@@ -226,9 +226,17 @@ query = st.text_area(
 st.markdown("<hr class='gh-divider'>", unsafe_allow_html=True)
 
 async def run_github_agent(message: str) -> str:
-    """Spin up the MCP GitHub server and run the agno agent."""
+    """
+    Initialize the Model Context Protocol GitHub server and execute an agent query.
+    
+    Args:
+        message: The user's query about the GitHub repository
+        
+    Returns:
+        The agent's response with GitHub insights, or an error message
+    """
     if not github_token:
-        return "⚠ GITHUB_TOKEN is not set in your environment."
+        return "GITHUB_TOKEN is not set in your environment."
 
     try:
         server_params = StdioServerParameters(
